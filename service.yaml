@@ -1,0 +1,12 @@
+name: appointment-slots-service
+port: 8601
+lang: python
+description: "appointment-slots-service \u2014 domain: appointments"
+http_deps:
+- provider-schedule-service
+- audit-log-service
+publishes:
+- audit.event
+subscribes:
+- appointment.booked
+- appointment.cancelled
