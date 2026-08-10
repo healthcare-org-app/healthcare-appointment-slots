@@ -1,7 +1,7 @@
 services:
   appointment-slots-service:
     build: .
-    container_name: ${NAME_UNDERSCORE}
+    container_name: appointment_slots_service
     depends_on:
       postgres:
         condition: service_healthy
