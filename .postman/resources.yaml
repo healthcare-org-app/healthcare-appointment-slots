@@ -1,7 +1,8 @@
-localResources:
+cloudResources:
   collections:
-    - ../postman/collections/Appointment Slots API
+    ../postman/collections/Appointment Slots API: 56226622-8f700dfa-4c04-4a37-aff6-7cdcf18a131e
   specs:
-    - ../openapi.yaml
+    ../openapi.yaml: 54bfa4bb-a546-4c0f-9146-6f9fbe8c0b88
 workspace:
-  id: '175e1378-c3c6-47e2-9346-0ca5b22c9d66'
+  id: 6b828809-187a-485a-a460-52dddbcbe777
+  name: healthcare-org-app/healthcare-appointment-slots
