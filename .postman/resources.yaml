@@ -1,4 +1,6 @@
 localResources:
+  collections:
+    - ../postman/collections/Appointment Slots API
   specs:
     - ../openapi.yaml
 workspace:

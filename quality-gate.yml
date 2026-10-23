@@ -1,0 +1,15 @@
+# Config of the Postman agent quality gate: https://github.com/Postman-Devrel/postman-agent-quality-gate
+# The spec and the collection come from .postman/resources.yaml. Everything not set here uses the gate's defaults.
+
+# Name of this API in the Postman Context Graph (to find its consumers).
+impact:
+  api: appointment-slots-service
+
+# Pass at B or better, and block whatever the score on a lint failure,
+# failing contract tests or a breaking change with a known consumer.
+pass_rating: B
+
+blockers:
+  contract-lint: on_fail
+  contract-tests: on_fail
+  impact: on_breaking

@@ -1,0 +1,21 @@
+$kind: http-request
+description: "`200` when dependencies are reachable, `503` when degraded."
+url: '{{baseUrl}}/ready'
+method: GET
+headers:
+  - key: Accept
+    value: application/json
+auth:
+  type: noauth
+settings: {}
+order: 2000
+scripts:
+  - type: afterResponse
+    code: |
+      pm.test("200 or 503 with a readiness body", () => {
+        pm.expect(pm.response.code).to.be.oneOf([200, 503]);
+        const r = pm.response.json();
+        pm.expect(r).to.have.all.keys("status", "service", "problems");
+        pm.expect(r.status).to.be.oneOf(["ok", "degraded"]);
+      });
+    language: text/javascript
