@@ -1,0 +1,16 @@
+$kind: http-request
+description: Always returns `200` if the process is up. Performs no dependency checks.
+url: '{{baseUrl}}/health'
+method: GET
+headers:
+  - key: Accept
+    value: application/json
+auth:
+  type: noauth
+settings: {}
+order: 1000
+scripts:
+  - type: afterResponse
+    code: |
+      pm.test("200 on probe", () => { pm.response.to.have.status(200); pm.expect(pm.response.json()).to.be.an("object"); });
+    language: text/javascript

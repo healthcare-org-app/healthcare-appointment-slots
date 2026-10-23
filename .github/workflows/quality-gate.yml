@@ -1,0 +1,18 @@
+# Postman agent quality gate: https://github.com/Postman-Devrel/postman-agent-quality-gate
+# Config: quality-gate.yml. Make the "gate / quality-gate" check required to block merges.
+name: quality-gate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  gate:
+    uses: Postman-Devrel/postman-agent-quality-gate/.github/workflows/gate.yml@v1
+    secrets:
+      POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
+    permissions:
+      contents: read
+      pull-requests: write
+      actions: read

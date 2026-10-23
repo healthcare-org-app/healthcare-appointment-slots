@@ -1,0 +1,16 @@
+$kind: collection
+description: |
+  HTTP API for `appointment-slots-service` (domain: **appointments**, port **8601**).
+  Bookable slot inventory. Slot state (`booked` / `open`) is driven by
+  `appointments-service` events, not by this HTTP API. Route prefix is
+  `/api/appointment_slots` (underscore).
+variables:
+  baseUrl: http://localhost:8601
+  bearerToken: ""
+  record_id: "1"
+auth:
+  - id: 3b0f6d2e-7c41-4a56-9d1e-5a8c2f4b7e10
+    type: bearer
+    name: bearer auth
+    credentials:
+      token: "{{bearerToken}}"
