@@ -135,8 +135,9 @@ paths:
       operationId: createAppointmentSlot
       summary: Create a slot
       description: |
-        Creates a slot. The request body is stored verbatim as the record's `data`
-        document, except for `id`, which is stripped if present.
+        Creates a slot. Clients must send a JSON request body (the server currently
+        tolerates a missing body, treating it as `{}`). The body is stored verbatim
+        as the record's `data` document, except for `id`, which is stripped if present.
 
         Plain insert — this service performs no peer lookups and no enrichment,
         and publishes no domain event.
@@ -150,10 +151,13 @@ paths:
       parameters:
         - $ref: '#/components/parameters/RequestId'
       requestBody:
-        required: false
+        required: true
         description: |
-          Optional. A missing or unparseable body is treated as `{}` and creates an
-          empty record rather than failing.
+          Required. Clients must send a JSON body. Note that the server currently
+          tolerates its absence: a missing or unparseable body is treated as `{}`
+          and creates an empty record rather than failing with a 400. Do not rely
+          on this lenient behavior; it may become a validation error in a future
+          version.
         content:
           application/json:
             schema:

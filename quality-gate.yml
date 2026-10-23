@@ -13,3 +13,10 @@ blockers:
   contract-lint: on_fail
   contract-tests: on_fail
   impact: on_breaking
+
+# Accepted lint findings (human decision).
+contract-lint:
+  exceptions:
+    - path: paths./api/appointment_slots/
+      issue: no trailing slashes
+      reason: Existing consumer-facing route; renaming it would break consumers. Accepted until a versioned slash-free path is introduced.
